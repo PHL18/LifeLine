@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
 
                 }
 
+                Text("hello world")
 
                 Box(
                     modifier = Modifier
