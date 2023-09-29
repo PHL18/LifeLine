@@ -110,8 +110,6 @@ class NumberSettings : ComponentActivity() {
                         }
                     }
 
-
-
                     Spacer(modifier = Modifier.height(16.dp))
                     // frontend: with conditional execution
                     if (contactnum.isNotEmpty())
