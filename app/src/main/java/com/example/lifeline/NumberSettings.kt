@@ -1,5 +1,4 @@
 package com.example.lifeline
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -37,7 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import com.example.lifeline.ui.theme.LifeLineTheme
-
 class NumberSettings : ComponentActivity() {
 
 
@@ -54,7 +52,7 @@ class NumberSettings : ComponentActivity() {
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), 1)
         setContent {
             Image(
-                painter = painterResource(id = R.drawable.numbersettings), // Replace with your image resource
+                painter = painterResource(id = R.drawable.nyellow1), // Replace with your image resource
                 contentDescription = null, // Provide a description for accessibility
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.fillMaxSize()
@@ -69,7 +67,7 @@ class NumberSettings : ComponentActivity() {
                     verticalArrangement = Arrangement.Top
                 ) {
                     Button(
-                        colors = ButtonDefaults.outlinedButtonColors(Color(0xFFFFCC00)),
+                        colors = ButtonDefaults.outlinedButtonColors(Color.Black),
                         onClick = {
                             // backend: activate if needed
                             val goBack = Intent(this@NumberSettings, MainActivity::class.java)
@@ -78,7 +76,7 @@ class NumberSettings : ComponentActivity() {
                         },
                         modifier = Modifier.padding(16.dp)
                     ) {
-                        Text("X",color=Color.DarkGray)
+                        Text("X",color=Color.Yellow)
                     }
                 }
 
@@ -91,12 +89,11 @@ class NumberSettings : ComponentActivity() {
                 )
                 {
                     Spacer(modifier = Modifier.padding(50.dp))
-                    Spacer(modifier = Modifier.padding(50.dp))
                     Box(
                         modifier = Modifier.padding(top =30.dp)
                     ){
                         Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color(0xFFFFCC00)),
+                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
                             onClick = {
                                 // backend: activate if needed
                                 val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
@@ -106,7 +103,7 @@ class NumberSettings : ComponentActivity() {
                             modifier = Modifier
                                 .width(200.dp)
                         ) {
-                            Text("Select a contact",color = Color.DarkGray)
+                            Text("Select a contact",color = Color.White)
                         }
                     }
 
@@ -128,7 +125,7 @@ class NumberSettings : ComponentActivity() {
                         modifier = Modifier.padding(top =30.dp)
                     ) {
                         Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color(0xFFFFCC00)),
+                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
                             onClick = {
                                 val values = ContentValues()
                                 if (contactname.isNotEmpty() && contactnum.isNotEmpty())
@@ -155,18 +152,18 @@ class NumberSettings : ComponentActivity() {
                             },
                             modifier = Modifier.width(200.dp)
                         ) {
-                            Text("Save the contact",color = Color.DarkGray)
+                            Text("Save the contact",color = Color.White)
                         }
                     }
 
-                    //Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     // backend: activate if needed
                     var databaseRead by remember { mutableStateOf("") }
                     Box(
                         modifier = Modifier.padding(top =30.dp)
                     ) {
                         Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color(0xFFFFCC00)),
+                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
                             onClick = {
                                 // backend: activate if needed
                                 databaseRead = ""
@@ -177,7 +174,11 @@ class NumberSettings : ComponentActivity() {
 
                                 if (cursor.moveToFirst()) {
                                     do {
-                                        databaseRead += "${cursor.getString(1)} : ${cursor.getString(2)}\n"
+                                        databaseRead += "${cursor.getString(1)} : ${
+                                            cursor.getString(
+                                                2
+                                            )
+                                        }\n"
                                     } while (cursor.moveToNext())
                                 }
 
@@ -188,12 +189,14 @@ class NumberSettings : ComponentActivity() {
                             },
                             modifier = Modifier.width(200.dp)
                         ) {
-                            Text("See saved contacts", color = Color.DarkGray)
+                            Text("See saved contacts", color = Color.White)
                         }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
-                    Spacer(modifier = Modifier.height(16.dp))
+
+                    // frontend: conditional behaviour
+
 
 
                 }
