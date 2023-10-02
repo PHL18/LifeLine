@@ -31,6 +31,7 @@ class trycallsms : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LifeLineTheme {
+                checkCallPermissions()
 
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -59,8 +60,10 @@ class trycallsms : ComponentActivity() {
                        onClick = {
 
                            if (checkCallPermissions()) {
+                               showMessage("entered", "in if statement")
                                // placeCall("+917057603762")
                                 sendSMStoAll()
+
                            }
 
 
@@ -69,14 +72,20 @@ class trycallsms : ComponentActivity() {
                    }
                     Button(onClick = {
 
-                        if (checkCallPermissions()) placeCall("+919673093300")
+                        if (checkCallPermissions()) {
+                            //placeCall("+919673093300")
+                            sendSMStoAll()
+                        }
                     }) {
                         Text("Police")
                     }
                     Button(
                         onClick = {
 
-                            if (checkCallPermissions()) placeCall("+919673083300")
+                            if (checkCallPermissions()) {
+                                // placeCall("+919673083300")
+                                sendSMStoAll()
+                            }
                         }
                     ) {
                         Text("Ambulance")
@@ -118,6 +127,7 @@ class trycallsms : ComponentActivity() {
                 val newmessage = "Hello ${cursor.getString(1)}\n" + message
                 sendSMS(contact, newmessage)
             } while (cursor.moveToNext())
+
         }
 
         // // Close the cursor
