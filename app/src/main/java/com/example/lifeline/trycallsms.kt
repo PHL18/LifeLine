@@ -4,8 +4,10 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
+import android.telephony.SmsManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -29,6 +31,7 @@ class trycallsms : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LifeLineTheme {
+
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.Top
@@ -54,19 +57,26 @@ class trycallsms : ComponentActivity() {
                 ){
                    Button(
                        onClick = {
-                           checkCallPermissions()
-                            placeCall("+917057603762")
+
+                           if (checkCallPermissions()) {
+                               // placeCall("+917057603762")
+                                sendSMStoAll()
+                           }
+
+
                    }) {
                        Text("Family")
                    }
                     Button(onClick = {
 
+                        if (checkCallPermissions()) placeCall("+919673093300")
                     }) {
                         Text("Police")
                     }
                     Button(
                         onClick = {
 
+                            if (checkCallPermissions()) placeCall("+919673083300")
                         }
                     ) {
                         Text("Ambulance")
@@ -82,6 +92,41 @@ class trycallsms : ComponentActivity() {
         builder.setTitle(title)
         builder.setMessage(message)
         builder.show()
+    }
+
+    private fun sendSMStoAll()
+    {
+        val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
+        var message = ""
+
+        val cursor1 = db.rawQuery("SELECT SMS FROM sms WHERE rowid = 1;", null)
+        message = if (cursor1.moveToFirst()) {
+            cursor1.getString(0).ifEmpty {
+                "Hello! please help! your contact is in emergency!"
+            }
+        } else {
+            "Hello! please help! your contact is in emergency!"
+        }
+       cursor1.close()
+        val cursor = db.rawQuery("SELECT * FROM contacts", null)
+
+        // // Iterate through the cursor and store the data in a string
+
+        if (cursor.moveToFirst()) {
+            do {
+                val contact = "${cursor.getString(2)}"
+                val newmessage = "Hello ${cursor.getString(1)}\n" + message
+                sendSMS(contact, newmessage)
+            } while (cursor.moveToNext())
+        }
+
+        // // Close the cursor
+        cursor.close()
+   }
+
+    private fun sendSMS(phoneNumber: String, message: String) {
+        val smsManager = SmsManager.getDefault()
+        smsManager.sendTextMessage(phoneNumber, null, message, null, null)
     }
 
     private fun placeCall(phoneNumber: String) {
