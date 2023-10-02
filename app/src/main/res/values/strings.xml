@@ -5,4 +5,5 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_newsplash">newsplash</string>
     <string name="title_activity_mainsplash">mainsplash</string>
+    <string name="title_activity_trycallsms">trycallsms</string>
 </resources>
