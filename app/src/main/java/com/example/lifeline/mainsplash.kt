@@ -1,6 +1,7 @@
 package com.example.lifeline
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +26,14 @@ import androidx.compose.ui.unit.dp
 class Splash : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+        val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
+        val tableExists = doesTableExist(db, "sms")
+        if (tableExists) {
+            val mainact = Intent(this@Splash, MainActivity::class.java)
+            startActivity(mainact)
+            finish()
+        }
+
         setContent {
             Surface(
                 modifier = Modifier.fillMaxSize(),
@@ -64,5 +72,13 @@ class Splash : ComponentActivity() {
                 }
             }
         }
+    }
+
+    fun doesTableExist(database: SQLiteDatabase, tableName: String): Boolean {
+        val query = "SELECT name FROM sqlite_master WHERE type='table' AND name='$tableName'"
+        val cursor = database.rawQuery(query, null)
+        val tableExists = cursor.moveToFirst()
+        cursor.close()
+        return tableExists
     }
 }
