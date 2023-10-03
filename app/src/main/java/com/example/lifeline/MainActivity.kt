@@ -1,6 +1,7 @@
 package com.example.lifeline
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,6 +31,9 @@ import com.example.lifeline.ui.theme.LifeLineTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
+        db.execSQL("CREATE TABLE IF NOT EXISTS sms(SMS VARCHAR(160));")
+        db.execSQL("CREATE TABLE IF NOT EXISTS contacts(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, PhoneNum TEXT);")
         setContent {
 
             // Semicircle()

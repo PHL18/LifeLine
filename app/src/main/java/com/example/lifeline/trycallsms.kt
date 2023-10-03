@@ -50,6 +50,7 @@ class trycallsms : ComponentActivity() {
                         Text("X",color= Color.Yellow)
                     }
                 }
+
                 Column(
                     modifier= Modifier
                         .padding(10.dp),
@@ -60,7 +61,6 @@ class trycallsms : ComponentActivity() {
                        onClick = {
 
                            if (checkCallPermissions()) {
-                               showMessage("entered", "in if statement")
                                // placeCall("+917057603762")
                                 sendSMStoAll()
 

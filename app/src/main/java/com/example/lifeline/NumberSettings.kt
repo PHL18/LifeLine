@@ -64,7 +64,6 @@ class NumberSettings : ComponentActivity() {
             LifeLineTheme {
                 // backend: activate if needed
                 val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
-                db.execSQL("CREATE TABLE IF NOT EXISTS contacts(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, PhoneNum TEXT);")
 
                 Column(
                     modifier = Modifier.fillMaxSize(),
