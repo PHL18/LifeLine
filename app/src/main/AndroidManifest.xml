@@ -51,7 +51,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.LifeLine"></activity>
+            android:theme="@style/Theme.LifeLine"/>
     </application>
 
 </manifest>

@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -130,15 +134,31 @@ class NumberSettings : ComponentActivity() {
                                 val values = ContentValues()
                                 if (contactname.isNotEmpty() && contactnum.isNotEmpty())
                                 {
-                                    values.put("Name", contactname)
-                                    values.put("PhoneNum", contactnum)
-                                    val newRowId = db.insert("contacts", null, values)
-                                    when {
-                                        newRowId != -1L -> {
-                                            Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show()
-                                        }
-                                        else -> {
-                                            Toast.makeText(context,"failed to save contact!\nplease try later", Toast.LENGTH_SHORT).show()
+                                    val cursor = db.query(
+                                        "contacts", // Table name
+                                        null,        // Columns (null means all columns)
+                                        "PhoneNum = ?", // Selection (WHERE clause)
+                                        arrayOf(contactnum), // Selection arguments (array of strings)
+                                        null,        // Group by
+                                        null,        // Having
+                                        null         // Order by
+                                    )
+                                    if (cursor.moveToFirst())
+                                    {
+                                        Toast.makeText(context,"The contact is already saved", Toast.LENGTH_SHORT).show()
+                                    }
+                                    else
+                                    {
+                                        values.put("Name", contactname)
+                                        values.put("PhoneNum", contactnum)
+                                        val newRowId = db.insert("contacts", null, values)
+                                        when {
+                                            newRowId != -1L -> {
+                                                Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show()
+                                            }
+                                            else -> {
+                                                Toast.makeText(context,"failed to save contact!\nplease try later", Toast.LENGTH_SHORT).show()
+                                            }
                                         }
                                     }
                                     contactname = ""
@@ -196,13 +216,36 @@ class NumberSettings : ComponentActivity() {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     // frontend: conditional behaviour
+                    Button(
+                        onClick = {
+                            showInputDialog(
+                                this@NumberSettings,
+                                "Enter a Contact Name to Delete",
+                                "Type the contact name you want to delete"
+                            ) { userInput ->
+                                if (userInput.isNotEmpty()) {
+                                    val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
+                                    val whereClause = "Name = ?"
+                                    val whereArgs = arrayOf(userInput.trim())
 
+                                    val deletedRows = db.delete("contacts", whereClause, whereArgs)
+                                    db.close()
 
-
+                                    if (deletedRows > 0) {
+                                        Toast.makeText(context, "Contact '$userInput' deleted successfully", Toast.LENGTH_SHORT).show()
+                                    } else {
+                                        Toast.makeText(context, "Contact '$userInput' not found or deletion failed", Toast.LENGTH_SHORT).show()
+                                    }
+                                } else {
+                                    Toast.makeText(context, "Please enter a contact name", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }) {
+                            Text("delete a contact")
+                    }
                 }
             }
         }
-
     }
 
     // backend: activate if needed
@@ -262,4 +305,30 @@ class NumberSettings : ComponentActivity() {
         builder.setMessage(message)
         builder.show()
     }
+
+    private fun showInputDialog(context: Context, title: String, hint: String, callback: (String) -> Unit) {
+        val input = EditText(context)
+        input.hint = hint
+
+        val lp = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        input.layoutParams = lp
+
+        val dialog = AlertDialog.Builder(context)
+            .setTitle(title)
+            .setView(input)
+            .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                val userInput = input.text.toString()
+                callback(userInput)
+            })
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, _ ->
+                dialog.cancel()
+            })
+            .create()
+
+        dialog.show()
+    }
+
 }

@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             )
             LifeLineTheme {
                 Column(
-                    modifier = Modifier.padding(80.dp)
+                    modifier = Modifier.padding(60.dp)
                 ) {
 
                 }
@@ -77,15 +77,17 @@ class MainActivity : ComponentActivity() {
                                 horizontalAlignment = Alignment.CenterHorizontally
 
                             ){
-                                Spacer(modifier = Modifier.height(560.dp))
+                                Spacer(modifier = Modifier.height(540.dp))
                                 Spacer(modifier = Modifier.height(70.dp))
 
                                 Button(
                                     onClick = {
-
+                                        val intent = Intent(this@MainActivity, trycallsms::class.java)
+                                        startActivity(intent)
+                                        finish()
                                     }
                                 ) {
-
+                                    Text("Try calls")
                                 }
 
                                 Button(
