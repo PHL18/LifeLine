@@ -1,0 +1,695 @@
+{
+  "name": "android_large_6",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "CoHvVnOFbu2lpt8tgjwUyf",
+    "node": "102:110",
+    "version": "4339273723",
+    "component-id": "197cf7fc3beecc9dcc133e3f3a8e3cfef45a8bfd"
+  },
+  "default": "Android Large - 6",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Ellipse 32"
+      },
+      {
+        "type": "vector",
+        "id": "Ellipse 29"
+      },
+      {
+        "type": "text",
+        "id": "Lifelline"
+      },
+      {
+        "type": "text",
+        "id": "Number settings"
+      },
+      {
+        "type": "text",
+        "id": "Try calls"
+      },
+      {
+        "type": "group",
+        "id": "number settings logo"
+      },
+      {
+        "type": "text",
+        "id": "Message manager"
+      },
+      {
+        "type": "group",
+        "id": "🦆 icon \"apple watch\""
+      },
+      {
+        "type": "image",
+        "id": "Night-Hiking-App 1"
+      },
+      {
+        "type": "group",
+        "id": "message manager"
+      },
+      {
+        "type": "group",
+        "id": "try calls logo"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 12"
+      },
+      {
+        "type": "group",
+        "id": "🦆 icon \"contacts\""
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "vector",
+        "id": "Vector1"
+      },
+      {
+        "type": "vector",
+        "id": "Vector2"
+      },
+      {
+        "type": "vector",
+        "id": "Vector3"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 14"
+      },
+      {
+        "type": "group",
+        "id": "🦆 icon \"comment\""
+      },
+      {
+        "type": "vector",
+        "id": "Vector4"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 13"
+      },
+      {
+        "type": "group",
+        "id": "🦆 icon \"phone\""
+      },
+      {
+        "type": "vector",
+        "id": "Vector5"
+      }
+    ],
+    "modes": {
+      "Android Large - 6": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "Ellipse 32",
+              "Ellipse 29",
+              "Lifelline",
+              "Number settings",
+              "Try calls",
+              "number settings logo",
+              "Message manager",
+              "🦆 icon \"apple watch\"",
+              "Night-Hiking-App 1",
+              "message manager",
+              "try calls logo"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            }
+          },
+          {
+            "id": "Ellipse 32",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "65.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "152.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "207.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "206.0"
+              }
+            },
+            "vector-content": "ellipse_32.svg"
+          },
+          {
+            "id": "Ellipse 29",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "23.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "110.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "197.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "198.0"
+              }
+            },
+            "vector-content": "ellipse_29.svg"
+          },
+          {
+            "id": "Lifelline",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "32.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "479.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Lifelline",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-size": "33.0",
+            "line-height": "1.5",
+            "typeface": "Poppins"
+          },
+          {
+            "id": "Number settings",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "87.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "578.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Number settings",
+            "overflow": "visible",
+            "text-align": "left",
+            "line-height": "1.5",
+            "typeface": "Poppins"
+          },
+          {
+            "id": "Try calls",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "88.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "639.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Try calls",
+            "overflow": "visible",
+            "text-align": "left",
+            "line-height": "1.5",
+            "typeface": "Poppins"
+          },
+          {
+            "id": "number settings logo",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "32.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "567.0"
+              }
+            },
+            "tap-handler": "$onclicknumber",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Rectangle 12",
+              "🦆 icon \"contacts\""
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Message manager",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "88.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "696.0"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Message manager",
+            "overflow": "visible",
+            "text-align": "left",
+            "line-height": "1.5",
+            "typeface": "Poppins"
+          },
+          {
+            "id": "🦆 icon \"apple watch\"",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "140.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "217.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "57.6396484375"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "76.8916015625"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Vector3"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Night-Hiking-App 1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "724.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-52.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "298.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "692.0"
+              }
+            },
+            "image-content": "night_hiking_app_1.jpeg",
+            "scale": "fill"
+          },
+          {
+            "id": "message manager",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "34.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "685.0"
+              }
+            },
+            "tap-handler": "$onClickmessage",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Rectangle 14",
+              "🦆 icon \"comment\""
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "try calls logo",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "33.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "626.0"
+              }
+            },
+            "tap-handler": "$onClickcall",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Rectangle 13",
+              "🦆 icon \"phone\""
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Rectangle 12",
+            "border-radius": "12.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "vector-content": "rectangle_12.svg"
+          },
+          {
+            "id": "🦆 icon \"contacts\"",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "7.1787109375"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "8.1787109375"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "27.8212890625"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "27.8212890625"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Vector",
+              "Vector1",
+              "Vector2"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Vector",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            }
+          },
+          {
+            "id": "Vector1",
+            "margin": {
+              "left": "10.0302734375",
+              "top": "3.1875",
+              "right": "10.0302734375",
+              "bottom": "16.873046875"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-1.255859375"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-1.255859375"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector.svg"
+          },
+          {
+            "id": "Vector2",
+            "margin": {
+              "left": "3.5615234375",
+              "top": "14.513671875",
+              "right": "3.5615234375",
+              "bottom": "2.318359375"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector1.svg"
+          },
+          {
+            "id": "Vector3",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector2.svg"
+          },
+          {
+            "id": "Rectangle 14",
+            "border-radius": "12.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "vector-content": "rectangle_14.svg"
+          },
+          {
+            "id": "🦆 icon \"comment\"",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "10.296875"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "11.5087890625"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "21.703125"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "18.98828125"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Vector4"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Vector4",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector3.svg"
+          },
+          {
+            "id": "Rectangle 13",
+            "border-radius": "12.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "43.0"
+              }
+            },
+            "vector-content": "rectangle_13.svg"
+          },
+          {
+            "id": "🦆 icon \"phone\"",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "11.1337890625"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "11.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.7978515625"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.8046875"
+              }
+            },
+            "is-structured": "false",
+            "children": [
+              "Vector5"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Vector5",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector4.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "onclicknumber": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "onClickmessage": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    },
+    "onClickcall": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "Android Large - 6",
+      "size": {
+        "width": 360.0,
+        "height": 800.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

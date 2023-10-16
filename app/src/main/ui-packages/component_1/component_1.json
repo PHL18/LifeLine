@@ -1,0 +1,116 @@
+{
+  "name": "component_1",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "RSh5GPqEGObwbyfn2za1rw",
+    "node": "153:26",
+    "version": "4339235590",
+    "component-id": "924e3a215551dda5af041f26c1c3da59c0a15d70"
+  },
+  "default": "Component 1",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 21"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 22"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 23"
+      }
+    ],
+    "modes": {
+      "Component 1": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "Rectangle 21",
+              "Rectangle 22",
+              "Rectangle 23"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Rectangle 21",
+            "margin": {
+              "bottom": "180.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_21.svg"
+          },
+          {
+            "id": "Rectangle 22",
+            "margin": {
+              "top": "95.0",
+              "bottom": "85.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_22.svg"
+          },
+          {
+            "id": "Rectangle 23",
+            "margin": {
+              "top": "180.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_23.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Component 1",
+      "size": {
+        "width": 59.0,
+        "height": 244.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

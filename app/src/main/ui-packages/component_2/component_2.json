@@ -1,0 +1,120 @@
+{
+  "name": "component_2",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "RSh5GPqEGObwbyfn2za1rw",
+    "node": "153:27",
+    "version": "4339235590",
+    "component-id": "cd87331b5f46adb1878a48550410efb9d60d4871"
+  },
+  "default": "Component 2",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "text",
+        "id": "Welcome"
+      },
+      {
+        "type": "text",
+        "id": "Your one and only emergency contacts and message manager, wherein you can seamlessly administer your contacts"
+      }
+    ],
+    "modes": {
+      "Component 2": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "Welcome",
+              "Your one and only emergency contacts and message manager, wherein you can seamlessly administer your contacts"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Welcome",
+            "margin": {
+              "left": "2.0",
+              "bottom": "290.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "font-weight": "700.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Welcome",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "47.0",
+            "letter-spacing": "-0.47000000000000003",
+            "line-height": "1.5",
+            "typeface": "Inter"
+          },
+          {
+            "id": "Your one and only emergency contacts and message manager, wherein you can seamlessly administer your contacts",
+            "margin": {
+              "top": "81.0",
+              "right": "115.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "font-weight": "500.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Your one and only emergency contacts and message manager, wherein you can seamlessly administer your contacts\n",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "25.0",
+            "letter-spacing": "-0.25",
+            "line-height": "1.5",
+            "typeface": "Inter"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "Component 2",
+      "size": {
+        "width": 388.0,
+        "height": 361.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

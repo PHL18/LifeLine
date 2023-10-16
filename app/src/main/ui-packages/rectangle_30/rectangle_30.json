@@ -1,0 +1,74 @@
+{
+  "name": "rectangle_30",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "CoHvVnOFbu2lpt8tgjwUyf",
+    "node": "166:117",
+    "version": "4341748338",
+    "component-id": "3daa4e3f84c8be8307fc34be06dc6f52e8aa6069"
+  },
+  "default": "Rectangle 30",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 30"
+      }
+    ],
+    "modes": {
+      "Rectangle 30": {
+        "rules": [
+          {
+            "id": "top_level",
+            "tap-handler": "$redbutton",
+            "is-structured": "false",
+            "children": [
+              "Rectangle 30"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Rectangle 30",
+            "border-radius": "19.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_30.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "redbutton": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "Rectangle 30",
+      "size": {
+        "width": 308.0,
+        "height": 95.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

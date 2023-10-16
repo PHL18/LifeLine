@@ -1,0 +1,105 @@
+{
+  "name": "component_10",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "CoHvVnOFbu2lpt8tgjwUyf",
+    "node": "124:89",
+    "version": "4340255296",
+    "component-id": "14a60d9aa7c1ad9f5f31096387f783618f0013b5"
+  },
+  "default": "Component 10",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 15"
+      },
+      {
+        "type": "group",
+        "id": "user-alt"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      }
+    ],
+    "modes": {
+      "Component 10": {
+        "rules": [
+          {
+            "id": "top_level",
+            "tap-handler": "$newyellow",
+            "is-structured": "false",
+            "children": [
+              "Rectangle 15",
+              "user-alt"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Rectangle 15",
+            "border-radius": "8.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_15.svg"
+          },
+          {
+            "id": "user-alt",
+            "margin": "11.0",
+            "is-structured": "false",
+            "children": [
+              "Vector"
+            ]
+          },
+          {
+            "id": "Vector",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "newyellow": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "Component 10",
+      "size": {
+        "width": 43.0,
+        "height": 43.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}
