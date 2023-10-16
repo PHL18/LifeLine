@@ -130,7 +130,9 @@ class trycallsms : ComponentActivity() {
                                 // placeCall("+919673083300")
                                 sendSMStoAll()
                             }
-                        }
+                        },
+                        vectorAsset = painterResource(id = R.drawable.mdi_police_badge_outline_vector), // Replace with your vector drawable
+                        vectorSize = 40.dp
                     )
                 }
             }
