@@ -16,6 +16,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,10 +25,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,9 +39,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import com.example.lifeline.ui.theme.LifeLineTheme
@@ -55,12 +62,12 @@ class NumberSettings : ComponentActivity() {
         // Request the permission to read contacts.
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), 1)
         setContent {
-            Image(
-                painter = painterResource(id = R.drawable.nyellow1), // Replace with your image resource
-                contentDescription = null, // Provide a description for accessibility
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier.fillMaxSize()
-            )
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = Color.Black
+            ) {
+
+            }
             LifeLineTheme {
                 // backend: activate if needed
                 val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
@@ -82,35 +89,30 @@ class NumberSettings : ComponentActivity() {
                         Text("X",color=Color.Yellow)
                     }
                 }
-
                 Column(
-
                     modifier = Modifier
                         .fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 )
                 {
-                    Spacer(modifier = Modifier.padding(50.dp))
+                    Spacer(modifier = Modifier.padding(20.dp))
                     Box(
-                        modifier = Modifier.padding(top =30.dp)
+                        modifier = Modifier.padding(top =12.dp)
                     ){
-                        Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
+                        FigmaButton(
+                            buttonAsset= painterResource(id = R.drawable.rectangle_27_rectangle_27),
+                            buttonText = "Select Contact",
                             onClick = {
                                 // backend: activate if needed
                                 val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
                                 startActivityForResult(intent, 1)
 
                             },
-                            modifier = Modifier
-                                .width(200.dp)
-                        ) {
-                            Text("Select a contact",color = Color.White)
-                        }
-                    }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+
+                        )
+                    }
                     // frontend: with conditional execution
                     if (contactnum.isNotEmpty())
                     {
@@ -127,8 +129,9 @@ class NumberSettings : ComponentActivity() {
                     Box(
                         modifier = Modifier.padding(top =30.dp)
                     ) {
-                        Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
+                        FigmaButton(
+                            buttonAsset= painterResource(id = R.drawable.component_11_rectangle_28),
+                            buttonText = "Save Contact",
                             onClick = {
                                 val values = ContentValues()
                                 if (contactname.isNotEmpty() && contactnum.isNotEmpty())
@@ -170,19 +173,16 @@ class NumberSettings : ComponentActivity() {
 
                             },
                             modifier = Modifier.width(200.dp)
-                        ) {
-                            Text("Save the contact",color = Color.White)
-                        }
+                        )
                     }
-
-                    Spacer(modifier = Modifier.height(16.dp))
                     // backend: activate if needed
                     var databaseRead by remember { mutableStateOf("") }
                     Box(
-                        modifier = Modifier.padding(top =30.dp)
+                        modifier = Modifier.padding(top =10.dp)
                     ) {
-                        Button(
-                            colors = ButtonDefaults.outlinedButtonColors(Color.Black),
+                        FigmaButton(
+                            buttonAsset = painterResource(id = R.drawable.component_12_rectangle_29),
+                            buttonText = "See Contacts",
                             onClick = {
                                 // backend: activate if needed
                                 databaseRead = ""
@@ -207,15 +207,14 @@ class NumberSettings : ComponentActivity() {
 
                             },
                             modifier = Modifier.width(200.dp)
-                        ) {
-                            Text("See saved contacts", color = Color.White)
-                        }
+                        )
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
 
                     // frontend: conditional behaviour
-                    Button(
+                    FigmaButton(
+                        buttonAsset = painterResource(id = R.drawable.rectangle_30_rectangle_30),
+                        buttonText = "Delete",
                         onClick = {
                             showInputDialog(
                                 this@NumberSettings,
@@ -239,9 +238,7 @@ class NumberSettings : ComponentActivity() {
                                     Toast.makeText(context, "Please enter a contact name", Toast.LENGTH_SHORT).show()
                                 }
                             }
-                        }) {
-                            Text("delete a contact")
-                    }
+                        })
                 }
             }
         }
@@ -330,4 +327,42 @@ class NumberSettings : ComponentActivity() {
         dialog.show()
     }
 
+}
+@Composable
+fun FigmaButton(
+    buttonAsset: Painter,
+    buttonText: String,
+    onClick: () -> Unit,
+    vectorAsset: Painter? = null,
+    vectorSize: Dp? = null, // Add an optional parameter for the vector size
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = Modifier
+            .clickable { onClick() }
+            .size(200.dp)
+            .then(modifier)
+            .background(Color.Black)
+    ) {
+        Image(
+            painter = buttonAsset,
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+        )
+
+        vectorAsset?.let {
+            val vectorModifier = vectorSize?.let { Modifier.size(it) } ?: Modifier
+            Image(
+                painter = it,
+                contentDescription = null,
+                modifier = vectorModifier.then(Modifier.align(Alignment.CenterEnd))
+            )
+        }
+
+        Text(
+            text = buttonText,
+            color = Color.White,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
 }

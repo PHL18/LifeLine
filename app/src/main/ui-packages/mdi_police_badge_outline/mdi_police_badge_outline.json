@@ -1,0 +1,77 @@
+{
+  "name": "mdi_police_badge_outline",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "CoHvVnOFbu2lpt8tgjwUyf",
+    "node": "179:70",
+    "version": "4345402187",
+    "component-id": "0fe985f3390deabe37fe8ad59c1fb8c7c63920ef"
+  },
+  "default": "mdi:police-badge-outline",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      }
+    ],
+    "modes": {
+      "mdi:police-badge-outline": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": "false",
+            "children": [
+              "Vector"
+            ]
+          },
+          {
+            "id": "Vector",
+            "margin": {
+              "left": "2.8330078125",
+              "top": "2.8330078125",
+              "right": "2.833984375",
+              "bottom": "2.833984375"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "vector.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "police": {
+      "data-type": "text",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "mdi:police-badge-outline",
+      "size": {
+        "width": 34.0,
+        "height": 34.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

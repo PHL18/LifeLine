@@ -10,17 +10,28 @@ import android.os.Bundle
 import android.telephony.SmsManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.lifeline.ui.theme.LifeLineTheme
@@ -34,11 +45,12 @@ class trycallsms : ComponentActivity() {
                 checkCallPermissions()
 
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize()
+                        .background(color = Color.Black),
                     verticalArrangement = Arrangement.Top
                 ) {
                     Button(
-                        colors = ButtonDefaults.outlinedButtonColors(Color.Black),
+                        colors = ButtonDefaults.outlinedButtonColors(Color.White),
                         onClick = {
                             // backend: activate if needed
                             val goBack = Intent(this@trycallsms, MainActivity::class.java)
@@ -47,17 +59,40 @@ class trycallsms : ComponentActivity() {
                         },
                         modifier = Modifier.padding(16.dp)
                     ) {
-                        Text("X",color= Color.Yellow)
+                        Text("X",color= Color.Black)
                     }
+                }
+                Column (
+                    modifier = Modifier.padding(165.dp,top=279.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.Start
+                ){
+                    Text(text = "Family", color = Color.White, fontSize = 21.sp)
+                }
+                Column (
+                    modifier = Modifier.padding(165.dp,top=367.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.Start
+                ){
+                    Text(text = "Police", color = Color.White, fontSize = 21.sp)
+                }
+                Column (
+                    modifier = Modifier.padding(165.dp,top=460.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.Start
+                ){
+                    Text(text = "Ambulance", color = Color.White, fontSize = 21.sp)
                 }
 
                 Column(
                     modifier= Modifier
-                        .padding(10.dp),
+                        .padding(60.dp,top=250.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                   Button(
+                   FigmaButton(
+                       buttonAsset= painterResource(id = R.drawable.android_large_6_rectangle_14),
+                       buttonText = " ",
                        onClick = {
 
                            if (checkCallPermissions()) {
@@ -67,19 +102,28 @@ class trycallsms : ComponentActivity() {
                            }
 
 
-                   }) {
-                       Text("Family")
-                   }
-                    Button(onClick = {
+                   },
+                       vectorAsset = painterResource(id = R.drawable._icon_family_vector), // Replace with your vector drawable
+                       vectorSize = 40.dp
+                   )
+                    Spacer(modifier = Modifier.padding(7.dp))
+                    FigmaButton(
+                        buttonAsset= painterResource(id = R.drawable.android_large_6_rectangle_12),
+                        buttonText = " ",
+                        onClick = {
 
                         if (checkCallPermissions()) {
                             //placeCall("+919673093300")
                             sendSMStoAll()
                         }
-                    }) {
-                        Text("Police")
-                    }
-                    Button(
+                    },
+                        vectorAsset = painterResource(id = R.drawable.mdi_police_badge_outline_vector), // Replace with your vector drawable
+                        vectorSize = 40.dp
+                    )
+                    Spacer(modifier = Modifier.padding(7.dp))
+                    FigmaButton(
+                        buttonAsset = painterResource(id = R.drawable.android_large_6_rectangle_13),
+                        buttonText = " ",
                         onClick = {
 
                             if (checkCallPermissions()) {
@@ -87,9 +131,7 @@ class trycallsms : ComponentActivity() {
                                 sendSMStoAll()
                             }
                         }
-                    ) {
-                        Text("Ambulance")
-                    }
+                    )
                 }
             }
         }
@@ -133,6 +175,45 @@ class trycallsms : ComponentActivity() {
         // // Close the cursor
         cursor.close()
    }
+    @Composable
+    fun FigmaButton(
+        buttonAsset: Painter,
+        buttonText: String,
+        onClick: () -> Unit,
+        vectorAsset: Painter? = null,
+        vectorSize: Dp? = null, // Add an optional parameter for the vector size
+        modifier: Modifier = Modifier
+    ) {
+        Box(
+            modifier = Modifier
+                .clickable { onClick() }
+                .size(80.dp)
+                .then(modifier)
+
+        ) {
+            Image(
+                painter = buttonAsset,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+            )
+
+            vectorAsset?.let {
+                val vectorModifier = vectorSize?.let { Modifier.size(it) } ?: Modifier
+                Image(
+                    painter = it,
+                    contentDescription = null,
+                    modifier = vectorModifier.then(Modifier.align(Alignment.Center))
+                )
+            }
+
+            Text(
+                text = buttonText,
+                color = Color.White,
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
+    }
+
 
     private fun sendSMS(phoneNumber: String, message: String) {
         val smsManager = SmsManager.getDefault()
@@ -167,3 +248,4 @@ class trycallsms : ComponentActivity() {
     }
 
 }
+

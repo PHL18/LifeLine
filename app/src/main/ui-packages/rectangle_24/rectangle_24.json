@@ -1,0 +1,97 @@
+{
+  "name": "rectangle_24",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "CoHvVnOFbu2lpt8tgjwUyf",
+    "node": "140:235",
+    "version": "4340590805",
+    "component-id": "28c16ad77c7d6a9780a5d459fd77127d78daaad3"
+  },
+  "default": "Rectangle 24",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 24"
+      }
+    ],
+    "modes": {
+      "Rectangle 24": {
+        "rules": [
+          {
+            "id": "top_level",
+            "tap-handler": "$rectangleforbutton",
+            "is-structured": "false",
+            "children": [
+              "Rectangle 24"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Rectangle 24",
+            "border-radius": "12.0",
+            "drop-shadow": {
+              "color": {
+                "alpha": "0.24705882352941178",
+                "hue": "0.0",
+                "saturation": "0.0",
+                "value": "1.0"
+              },
+              "blur": "16.0",
+              "offset-x": "-1.0",
+              "offset-y": "7.0",
+              "spread": "5.0",
+              "blend-mode": "normal"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "-22.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "-14.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "vector-content": "rectangle_24.svg"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "rectangleforbutton": {
+      "data-type": "void-callback",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "Rectangle 24",
+      "size": {
+        "width": 115.0,
+        "height": 115.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}
