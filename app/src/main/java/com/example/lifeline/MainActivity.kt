@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.Start
                         ){
-                            Text(text = "Try call", color = Color.White, fontSize = 21.sp)
+                            Text(text = "Try Messages", color = Color.White, fontSize = 21.sp)
                         }
                         Column (
                             modifier = Modifier.padding(140.dp,top=427.dp),

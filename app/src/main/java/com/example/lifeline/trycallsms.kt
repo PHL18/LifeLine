@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
 import android.telephony.SmsManager
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -45,7 +47,8 @@ class trycallsms : ComponentActivity() {
                 checkCallPermissions()
 
                 Column(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                         .background(color = Color.Black),
                     verticalArrangement = Arrangement.Top
                 ) {
@@ -70,57 +73,58 @@ class trycallsms : ComponentActivity() {
                     Text(text = "Family", color = Color.White, fontSize = 21.sp)
                 }
                 Column (
-                    modifier = Modifier.padding(165.dp,top=367.dp),
+                    modifier = Modifier.padding(165.dp,top=410.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start
                 ){
                     Text(text = "Police", color = Color.White, fontSize = 21.sp)
                 }
                 Column (
-                    modifier = Modifier.padding(165.dp,top=460.dp),
+                    modifier = Modifier.padding(165.dp,top=540.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start
                 ){
                     Text(text = "Ambulance", color = Color.White, fontSize = 21.sp)
                 }
-
                 Column(
+
                     modifier= Modifier
                         .padding(60.dp,top=250.dp),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                   FigmaButton(
-                       buttonAsset= painterResource(id = R.drawable.android_large_6_rectangle_14),
-                       buttonText = " ",
-                       onClick = {
+                    FigmaButton(
+                        buttonAsset= painterResource(id = R.drawable.android_large_6_rectangle_14),
+                        buttonText = " ",
+                        onClick = {
 
-                           if (checkCallPermissions()) {
-                               // placeCall("+917057603762")
+                            if (checkCallPermissions()) {
+                                // placeCall("+917057603762")
                                 sendSMStoAll()
 
-                           }
+
+                            }
 
 
-                   },
-                       vectorAsset = painterResource(id = R.drawable._icon_family_vector), // Replace with your vector drawable
-                       vectorSize = 40.dp
-                   )
-                    Spacer(modifier = Modifier.padding(7.dp))
+                        },
+                        vectorAsset = painterResource(id = R.drawable.component_10_vector), // Replace with your vector drawable
+                        vectorSize = 40.dp
+                    )
+                    Spacer(modifier = Modifier.padding(25.dp))
                     FigmaButton(
                         buttonAsset= painterResource(id = R.drawable.android_large_6_rectangle_12),
                         buttonText = " ",
                         onClick = {
 
-                        if (checkCallPermissions()) {
-                            //placeCall("+919673093300")
-                            sendSMStoAll()
-                        }
-                    },
+                            if (checkCallPermissions()) {
+                                //placeCall("+919673093300")
+                                sendSMStoAll()
+                            }
+                        },
                         vectorAsset = painterResource(id = R.drawable.mdi_police_badge_outline_vector), // Replace with your vector drawable
                         vectorSize = 40.dp
                     )
-                    Spacer(modifier = Modifier.padding(7.dp))
+                    Spacer(modifier = Modifier.padding(25.dp))
                     FigmaButton(
                         buttonAsset = painterResource(id = R.drawable.android_large_6_rectangle_13),
                         buttonText = " ",
@@ -131,7 +135,7 @@ class trycallsms : ComponentActivity() {
                                 sendSMStoAll()
                             }
                         },
-                        vectorAsset = painterResource(id = R.drawable.mdi_police_badge_outline_vector), // Replace with your vector drawable
+                        vectorAsset = painterResource(id = R.drawable.vector_vector), // Replace with your vector drawable
                         vectorSize = 40.dp
                     )
                 }
@@ -160,7 +164,7 @@ class trycallsms : ComponentActivity() {
         } else {
             "Hello! please help! your contact is in emergency!"
         }
-       cursor1.close()
+        cursor1.close()
         val cursor = db.rawQuery("SELECT * FROM contacts", null)
 
         // // Iterate through the cursor and store the data in a string
@@ -176,7 +180,7 @@ class trycallsms : ComponentActivity() {
 
         // // Close the cursor
         cursor.close()
-   }
+    }
     @Composable
     fun FigmaButton(
         buttonAsset: Painter,
@@ -247,7 +251,6 @@ class trycallsms : ComponentActivity() {
             }
         }
         return true
-    }
+        }
 
 }
-

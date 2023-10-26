@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,6 +38,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
@@ -45,6 +47,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import com.example.lifeline.ui.theme.LifeLineTheme
 class NumberSettings : ComponentActivity() {
@@ -73,7 +76,7 @@ class NumberSettings : ComponentActivity() {
                 val db: SQLiteDatabase = openOrCreateDatabase("ContactDB", MODE_PRIVATE, null)
 
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.Top
                 ) {
                     Button(
@@ -86,135 +89,143 @@ class NumberSettings : ComponentActivity() {
                         },
                         modifier = Modifier.padding(16.dp)
                     ) {
-                        Text("X",color=Color.Yellow)
+                        Text("X",color=Color.White, fontSize = 25.sp)
                     }
                 }
                 Column(
                     modifier = Modifier
-                        .fillMaxSize(),
+                        .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 )
                 {
-                    Spacer(modifier = Modifier.padding(20.dp))
-                    Box(
-                        modifier = Modifier.padding(top =12.dp)
-                    ){
-                        FigmaButton(
-                            buttonAsset= painterResource(id = R.drawable.rectangle_27_rectangle_27),
-                            buttonText = "Select Contact",
-                            onClick = {
-                                // backend: activate if needed
-                                val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-                                startActivityForResult(intent, 1)
+                    Spacer(modifier = Modifier.padding(75.dp))
 
-                            },
+                    Button(
+                        modifier = Modifier
+                            .padding(40.dp)
+                            .height(48.dp)
+                            .width(200.dp),
+                        onClick = {
+                            // backend: activate if needed
+                            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+                            startActivityForResult(intent, 1)
 
+                        },
 
                         )
-                    }
-                    // frontend: with conditional execution
-                    if (contactnum.isNotEmpty())
                     {
-                        Text("Selected Phone Number: $contactnum")
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(text = "Select Contact")
                     }
+
                     // frontend: with conditional execution
-                    if (contactname.isNotEmpty())
-                    {
-                        Text("Name of Selected Number: $contactname")
-                        Spacer(modifier = Modifier.height(16.dp))
-                    }
+//                    if (contactnum.isNotEmpty())
+//                    {
+//                        Text("Selected Phone Number: $contactnum")
+//                        Spacer(modifier = Modifier.height(16.dp))
+//                    }
+//                    // frontend: with conditional execution
+//                    if (contactname.isNotEmpty())
+//                    {
+//                        Text("Name of Selected Number: $contactname")
+//                        Spacer(modifier = Modifier.height(16.dp))
+//                    }
                     val context= LocalContext.current
-                    Box(
-                        modifier = Modifier.padding(top =30.dp)
-                    ) {
-                        FigmaButton(
-                            buttonAsset= painterResource(id = R.drawable.component_11_rectangle_28),
-                            buttonText = "Save Contact",
-                            onClick = {
-                                val values = ContentValues()
-                                if (contactname.isNotEmpty() && contactnum.isNotEmpty())
+                    Button(
+                        modifier = Modifier
+                            .padding(40.dp)
+                            .height(48.dp)
+                            .width(200.dp),
+                        onClick = {
+                            val values = ContentValues()
+                            if (contactname.isNotEmpty() && contactnum.isNotEmpty())
+                            {
+                                val cursor = db.query(
+                                    "contacts", // Table name
+                                    null,        // Columns (null means all columns)
+                                    "PhoneNum = ?", // Selection (WHERE clause)
+                                    arrayOf(contactnum), // Selection arguments (array of strings)
+                                    null,        // Group by
+                                    null,        // Having
+                                    null         // Order by
+                                )
+                                if (cursor.moveToFirst())
                                 {
-                                    val cursor = db.query(
-                                        "contacts", // Table name
-                                        null,        // Columns (null means all columns)
-                                        "PhoneNum = ?", // Selection (WHERE clause)
-                                        arrayOf(contactnum), // Selection arguments (array of strings)
-                                        null,        // Group by
-                                        null,        // Having
-                                        null         // Order by
-                                    )
-                                    if (cursor.moveToFirst())
-                                    {
-                                        Toast.makeText(context,"The contact is already saved", Toast.LENGTH_SHORT).show()
-                                    }
-                                    else
-                                    {
-                                        values.put("Name", contactname)
-                                        values.put("PhoneNum", contactnum)
-                                        val newRowId = db.insert("contacts", null, values)
-                                        when {
-                                            newRowId != -1L -> {
-                                                Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show()
-                                            }
-                                            else -> {
-                                                Toast.makeText(context,"failed to save contact!\nplease try later", Toast.LENGTH_SHORT).show()
-                                            }
-                                        }
-                                    }
-                                    contactname = ""
-                                    contactnum = ""
+                                    Toast.makeText(context,"The contact is already saved", Toast.LENGTH_SHORT).show()
                                 }
                                 else
                                 {
-                                    Toast.makeText(context,"Please first select a contact", Toast.LENGTH_SHORT).show()
+                                    values.put("Name", contactname)
+                                    values.put("PhoneNum", contactnum)
+                                    val newRowId = db.insert("contacts", null, values)
+                                    when {
+                                        newRowId != -1L -> {
+                                            Toast.makeText(context,"Saved", Toast.LENGTH_SHORT).show()
+                                        }
+                                        else -> {
+                                            Toast.makeText(context,"failed to save contact!\nplease try later", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
                                 }
+                                contactname = ""
+                                contactnum = ""
+                            }
+                            else
+                            {
+                                Toast.makeText(context,"Please first select a contact", Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
-                            },
-                            modifier = Modifier.width(200.dp)
-                        )
+                    )
+                    {
+                        Text(text = "Save Contact")
                     }
+
                     // backend: activate if needed
                     var databaseRead by remember { mutableStateOf("") }
-                    Box(
-                        modifier = Modifier.padding(top =10.dp)
-                    ) {
-                        FigmaButton(
-                            buttonAsset = painterResource(id = R.drawable.component_12_rectangle_29),
-                            buttonText = "See Contacts",
-                            onClick = {
-                                // backend: activate if needed
-                                databaseRead = ""
-                                // // Create a cursor to query the database
-                                val cursor = db.rawQuery("SELECT * FROM contacts", null)
 
-                                // // Iterate through the cursor and store the data in a string
+                    Button(
+                        modifier = Modifier
+                            .padding(40.dp)
+                            .height(48.dp)
+                            .width(200.dp),
+                        onClick = {
+                            // backend: activate if needed
+                            databaseRead = ""
+                            // // Create a cursor to query the database
+                            val cursor = db.rawQuery("SELECT * FROM contacts", null)
 
-                                if (cursor.moveToFirst()) {
-                                    do {
-                                        databaseRead += "${cursor.getString(1)} : ${
-                                            cursor.getString(
-                                                2
-                                            )
-                                        }\n"
-                                    } while (cursor.moveToNext())
-                                }
+                            // // Iterate through the cursor and store the data in a string
 
-                                // // Close the cursor
-                                cursor.close()
-                                showMessage("These people will be contacted", databaseRead)
+                            if (cursor.moveToFirst()) {
+                                do {
+                                    databaseRead += "${cursor.getString(1)} : ${
+                                        cursor.getString(
+                                            2
+                                        )
+                                    }\n"
+                                } while (cursor.moveToNext())
+                            }
 
-                            },
-                            modifier = Modifier.width(200.dp)
-                        )
+                            // // Close the cursor
+                            cursor.close()
+                            showMessage("These people will be contacted", databaseRead)
+
+                        },
+                    )
+                    {
+                        Text(text = "See Contacts")
                     }
+
 
 
                     // frontend: conditional behaviour
-                    FigmaButton(
-                        buttonAsset = painterResource(id = R.drawable.rectangle_30_rectangle_30),
-                        buttonText = "Delete",
+
+                    Button(
+                        modifier = Modifier
+                            .padding(40.dp)
+                            .height(48.dp)
+                            .width(200.dp),
                         onClick = {
                             showInputDialog(
                                 this@NumberSettings,
@@ -239,6 +250,11 @@ class NumberSettings : ComponentActivity() {
                                 }
                             }
                         })
+                    {
+                        Text(text = "Delete")
+                    }
+
+
                 }
             }
         }
@@ -328,41 +344,39 @@ class NumberSettings : ComponentActivity() {
     }
 
 }
-@Composable
-fun FigmaButton(
-    buttonAsset: Painter,
-    buttonText: String,
-    onClick: () -> Unit,
-    vectorAsset: Painter? = null,
-    vectorSize: Dp? = null, // Add an optional parameter for the vector size
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = Modifier
-            .clickable { onClick() }
-            .size(200.dp)
-            .then(modifier)
-            .background(Color.Black)
-    ) {
-        Image(
-            painter = buttonAsset,
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-        )
-
-        vectorAsset?.let {
-            val vectorModifier = vectorSize?.let { Modifier.size(it) } ?: Modifier
-            Image(
-                painter = it,
-                contentDescription = null,
-                modifier = vectorModifier.then(Modifier.align(Alignment.CenterEnd))
-            )
-        }
-
-        Text(
-            text = buttonText,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.Center)
-        )
-    }
-}
+//@Composable
+//fun FigmaButton(
+//    buttonAsset: Painter,
+//    buttonText: String,
+//    onClick: () -> Unit,
+//    vectorAsset: Painter? = null,
+//    vectorSize: Dp? = null, // Add an optional parameter for the vector size
+//    modifier: Modifier = Modifier
+//) {
+//    Column(
+//        modifier = Modifier
+//            .clickable { onClick() }
+//            .size(200.dp)
+//            .then(modifier)
+//    ) {
+//        Image(
+//            painter = buttonAsset,
+//            contentDescription = null,
+//            modifier = Modifier.fillMaxSize(),
+//        )
+//
+//        vectorAsset?.let {
+//            val vectorModifier = vectorSize?.let { Modifier.size(it) } ?: Modifier
+//            Image(
+//                painter = it,
+//                contentDescription = null
+//            )
+//        }
+//
+//        Text(
+//            text = buttonText,
+//            color = Color.White,
+//            modifier = Modifier.align(CenterHorizontally)
+//     )
+//}
+//}

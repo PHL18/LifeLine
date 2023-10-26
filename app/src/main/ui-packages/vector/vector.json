@@ -4,9 +4,9 @@
   "source-key": {
     "type": "figma",
     "file": "CoHvVnOFbu2lpt8tgjwUyf",
-    "node": "146:238",
-    "version": "4340792971",
-    "component-id": "4dcd0658e72e7db29851de6a98ef4e4a60d6632d"
+    "node": "180:72",
+    "version": "4345598557",
+    "component-id": "b01eb0f2da4647e0d942c1d1d7f614eea37832ec"
   },
   "default": "Vector",
   "design": {
@@ -51,7 +51,7 @@
     }
   },
   "parameters": {
-    "Custom parameter": {
+    "ambulace": {
       "data-type": "text",
       "required": false,
       "description": ""
@@ -61,8 +61,8 @@
     {
       "design": "Vector",
       "size": {
-        "width": 70.0,
-        "height": 79.0
+        "width": 42.0,
+        "height": 40.0
       }
     }
   ],
